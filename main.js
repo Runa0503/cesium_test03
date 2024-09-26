@@ -69,7 +69,7 @@ viewer.entities.add({
 viewer.entities.add({
     name: "横浜検索の中心",
     description: "日本、〒221-0825 神奈川県横浜市神奈川区反町１丁目５−１２ シティコープ反町",
-    position: Cesium.Cartesian3.fromDegrees(139.6380,35.4437,0),
+    position: Cesium.Cartesian3.fromDegrees(139.474,35.373,0),
     point: {
         pixelSize: 20,
         color: Cesium.Color.RED,
