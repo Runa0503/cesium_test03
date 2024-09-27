@@ -29,9 +29,9 @@ viewer.camera.flyTo({
 
 // エンティティの追加
 viewer.entities.add({
-    name: "町田駅",
-    description: "東京都町田市原町田６丁目１２−２０",
-    position: Cesium.Cartesian3.fromDegrees(139.44536536590812,35.541994072641195, 0),
+    name: "横浜駅",
+    description: "〒220-0011 神奈川県横浜市西区高島２丁目",
+    position: Cesium.Cartesian3.fromDegrees(139.6221073371378,35.4661238909113, 0),
     point: {
         pixelSize: 20,
         color: Cesium.Color.RED,
@@ -43,9 +43,9 @@ viewer.entities.add({
 });
 
 viewer.entities.add({
-    name: "町田検索の中心",
-    description: "日本、〒221-0825 神奈川県横浜市神奈川区反町１丁目５−１２ シティコープ反町",
-    position: Cesium.Cartesian3.fromDegrees(139.446,35.541,0),
+    name: "横浜検索の中心",
+    description: "",
+    position: Cesium.Cartesian3.fromDegrees(139.474,35.373,0),
     point: {
         pixelSize: 20,
         color: Cesium.Color.RED,
