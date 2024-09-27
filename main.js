@@ -43,6 +43,20 @@ viewer.entities.add({
 });
 
 viewer.entities.add({
+    name: "桜木町駅",
+    description: "〒231-0062 神奈川県横浜市中区桜木町１丁目",
+    position: Cesium.Cartesian3.fromDegrees(139.6310454043321,35.45100047566533,0),
+    point: {
+        pixelSize: 20,
+        color: Cesium.Color.RED,
+        eyeOffset: new Cesium.Cartesian3(0.0, 0.0, -5.0),
+        distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0.0, 1000000.0),
+        disableDepthTestDistance: 1000000.0,
+        heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
+    }
+});
+
+viewer.entities.add({
     name: "横浜検索の中心１",
     description: "",
     position: Cesium.Cartesian3.fromDegrees(139.474,35.373,0),
