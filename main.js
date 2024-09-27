@@ -171,20 +171,3 @@ fetch('yokohama_restaurant_1000_1km_840.json')
     .catch(error => {
         console.error('JSONファイルの読み込みエラー:', error);
     });
-
-
-// 3D Tilesデータが読み込まれた後の処理
-Promise.all(tilesets.map(tileset => tileset.readyPromise)).then(function() {
-    viewer.zoomTo(tilesets);
-
-    // マウスクリックイベントの設定
-    var handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
-    handler.setInputAction(function(movement) {
-        var pickedObject = viewer.scene.pick(movement.position);
-        if (Cesium.defined(pickedObject) && pickedObject.id) {
-            viewer.selectedEntity = pickedObject.id;
-        }
-    }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
-}).otherwise(function(error) {
-    console.error(error);
-});
