@@ -57,7 +57,7 @@ viewer.entities.add({
 });
 
 // JSONファイルを読み込み
-fetch('machida_restaurant_2km_1000_867.json')
+fetch('yokohama_restaurant_1000_1km_840.json')
     .then(response => response.json())
     .then(data => {
         data.forEach(item => {
