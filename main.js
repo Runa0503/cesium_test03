@@ -43,9 +43,23 @@ viewer.entities.add({
 });
 
 viewer.entities.add({
-    name: "横浜検索の中心",
+    name: "横浜検索の中心１",
     description: "",
     position: Cesium.Cartesian3.fromDegrees(139.474,35.373,0),
+    point: {
+        pixelSize: 20,
+        color: Cesium.Color.RED,
+        eyeOffset: new Cesium.Cartesian3(0.0, 0.0, -5.0),
+        distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0.0, 1000000.0),
+        disableDepthTestDistance: 1000000.0,
+        heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
+    }
+});
+
+viewer.entities.add({
+    name: "横浜検索の中心２",
+    description: "",
+    position: Cesium.Cartesian3.fromDegrees(139.568,35.424,0),
     point: {
         pixelSize: 20,
         color: Cesium.Color.RED,
