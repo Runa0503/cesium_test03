@@ -38,6 +38,19 @@ div{
     z-index: 100; /* Cesiumのコンテナの上に表示するためのZ-index */
 }
 
+#menuBar2 {
+    position: absolute;
+    top: 0;
+    left: 200px;
+    width: 200px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* 黒の背景、不透明度50％ */
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 100; /* Cesiumのコンテナの上に表示するためのZ-index */
+}
+
 #menuBar ul {
     list-style-type: none;
     padding: 0;

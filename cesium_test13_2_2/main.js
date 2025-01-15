@@ -39,14 +39,88 @@ let allRestaurantData = [];
 fetch('yokohama_restaurant_1000_1km_2_1000.json')
     .then(response => response.json())
     .then(data => {
-        allRestaurantData = data;  // データを検証して無効なデータを除外
-        let clusters = createClusters(allRestaurantData);  // createClustersを呼び出す際に返り値を取得
-        displayClusters(clusters);  // その返り値を使ってクラスタを表示
-        displayEntities(allRestaurantData);  // 初期状態で全てのレストランデータを表示
+        allRestaurantData = data;
+        let clusters = createClusters(allRestaurantData);
+        displayClusters(clusters);
+        displayEntities(allRestaurantData);
+
+        // 検索ボックスのセットアップ
+        setupSearchFunctionality();
     })
     .catch(error => {
         console.error('JSONファイルの読み込みエラー:', error);
     });
+
+// 検索機能のセットアップ
+function setupSearchFunctionality() {
+    const searchBox = document.getElementById('searchBox');
+    const searchButton = document.getElementById('searchButton');
+
+    searchButton.addEventListener('click', () => {
+        const query = searchBox.value.trim().toLowerCase();
+        const results = searchInNameAndText(query);
+        displaySearchResults(results);
+    });
+}
+
+// 名前とレビューを検索
+function searchInNameAndText(query) {
+    if (!query) return [];
+
+    return allRestaurantData.filter(restaurant => {
+        const nameMatches = restaurant.name && restaurant.name.toLowerCase().includes(query);
+        const reviewsMatch = restaurant.reviews && restaurant.reviews.some(review => 
+            review.text && review.text.toLowerCase().includes(query)
+        );
+        return nameMatches || reviewsMatch;
+    });
+}
+
+// 検索結果を表示
+function displaySearchResults(results) {
+    const container = document.getElementById('searchResults');
+    container.innerHTML = ''; // 既存のデータをクリア
+
+    if (results.length === 0) {
+        container.innerHTML = '<p>検索結果が見つかりませんでした。</p>';
+        return;
+    }
+
+    // 検索結果を表示
+    results.forEach(restaurant => {
+        const card = document.createElement('div');
+        card.className = 'search-result-card';
+        card.innerHTML = `
+            <p>${restaurant.name}</p>
+        `;
+        container.appendChild(card);
+    });
+
+    // 以前のデータをクリア
+    clearOldData();
+
+    // 検索結果を allRestaurantData に反映して更新
+    const searchdata = results;
+
+    // クラスターやエンティティを再生成・再表示
+    const clusters = createClusters(searchdata);
+    displayClusters(clusters);
+    displayEntities(searchdata);
+}
+
+clearButton.addEventListener('click', () => {
+    // 以前のデータをクリア
+    clearOldData();
+    container.innerHTML = ''; // 既存のデータをクリア
+
+    // 検索結果を allRestaurantData に反映して更新
+    const resetdata = allRestaurantData;
+
+    // クラスターやエンティティを再生成・再表示
+    const clusters = createClusters(resetdata);
+    displayClusters(clusters);
+    displayEntities(resetdata);
+});
 
 // 価格帯フィルターチェックボックス
 document.querySelectorAll('#priceFilter input[type="checkbox"]').forEach((checkbox) => {

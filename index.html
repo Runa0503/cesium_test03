@@ -11,16 +11,22 @@
     <body>
         <!-- Menu bar -->
         <div id="menuBar">
-            <div id="typeFilter">
+            <div>
+                <input type="text" id="searchBox" placeholder="名前やレビューで検索">
+                <button id="searchButton">検索</button>
+                <button id="clearButton">検索をクリア</button>
+            </div>
+            
+            <!-- <div id="typeFilter">
                 
                 <h4>カテゴリで絞り込み:</h4>
                 <label><input type="checkbox" name="type" value="restaurant" onchange="updateFilter()">レストラン</label>
                 <label><input type="checkbox" name="type" value="bar" onchange="updateFilter()">バー</label>
                 <label><input type="checkbox" name="type" value="meal_takeaway" onchange="updateFilter()">テイクアウト</label>
                 <label><input type="checkbox" name="type" value="food" onchange="updateFilter()">フード全般</label>
-            </div>
+            </div> -->
 
-            <button onclick="location.href='./cesium_test13_2_2/index.html';">評価で表示</button>
+            <button onclick="location.href='../cesium_test13_2_2/index.html';">評価で表示</button>
 
             <div>
                 <label for="priceFilter"><input type="radio" name="type" value="price" onchange="updateFilter()">価格帯で絞り込み:</label>
@@ -43,9 +49,11 @@
                 </div>
             </div> -->
 
-
-
-
+       </div>
+       <div id="menuBar2">
+            <div id="searchResults">
+                <!-- 検索結果がここに表示されます -->
+            </div>
         </div>
 
         <!-- Cesium container -->
