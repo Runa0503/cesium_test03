@@ -282,19 +282,13 @@ function displayEntities(data) {
         const priceLevel = item.price_level === "N/A" ? null : (item.price_level || 1);
         const priceLevelNormalized = priceLevel ? Math.min(Math.max(priceLevel, 1), 5) : 1; // 1 から 5 に正規化
 
-        // rating の取得とデフォルト値の設定 (N/A や undefined の場合は null)
-        const rating = item.rating === "N/A" ? null : (item.rating || 1);
-        const ratingNormalized = rating ? Math.min(Math.max(rating, 1), 5) : 1; // 1 から 5 に正規化
-
-        // 色相 (priceLevel が低いと緑、価格が高いと紫に近づく、null の場合は水色)
-        const hue = priceLevel ? 120 - ((priceLevelNormalized - 1) / 4) * 160 : 180; // 緑(120)から紫(280)に変化
-
-        // 彩度と明度の設定 (rating が null の場合は 0%)
-        const saturation = rating ? (ratingNormalized / 5) * 100 : 0; // 彩度を 0-100% の範囲に設定
-        const lightness = rating ? (ratingNormalized / 5) * 50 + 25 : 0; // 明度を 25〜75% の範囲に設定
+        // 色相 (priceLevel が低いと緑、価格が高いと紫に近づく、null の場合は灰色)
+        const hue = priceLevel === null ? 0 : 120 - ((priceLevelNormalized - 1) / 4) * 180; // null の場合は灰色に相当する 0
+        const saturation = priceLevel === null ? 0 : 80; // null の場合は彩度 0
+        const lightness = priceLevel === null ? 50 : 50; // 明度は固定
 
         // HSL 色の作成
-        const colorHSL = `hsl(${hue}, ${saturation}%, 50%)`;
+        const colorHSL = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 
 
         const description = `
